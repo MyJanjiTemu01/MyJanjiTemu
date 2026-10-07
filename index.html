@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyJanjiTemu</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="notice" class="notice"></div>
+
+<!-- =====================================================
+     AUTH PAGE
+===================================================== -->
+<div id="authPage">
+
+    <div class="auth-card">
+
+        <div class="logo-circle">
+            <img src="logo.png" alt="Logo MyJanjiTemu">
+        </div>
+
+        <h1>MyJanjiTemu</h1>
+        <p>Platform janji temu yang mudah, cepat dan interaktif.</p>
+
+        <div id="authButtons" class="auth-buttons">
+
+            <button class="btn btn-primary" onclick="showLogin()">
+                Log Masuk
+            </button>
+
+            <button class="btn btn-secondary" onclick="showRegister()">
+                Daftar
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN -->
+        <div id="loginForm" class="form-container hidden">
+
+            <h2>Log Masuk</h2>
+
+            <div class="form-group">
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Masukkan email anda"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Kata Laluan</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Masukkan kata laluan"
+                >
+            </div>
+
+            <div class="form-actions">
+
+                <button
+                    class="btn btn-primary"
+                    onclick="loginUser()"
+                >
+                    Log Masuk
+                </button>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="backAuth()"
+                >
+                    Kembali
+                </button>
+
+            </div>
+
+            <div class="back-auth">
+                Belum mempunyai akaun?
+                <span onclick="showRegister()">Daftar</span>
+            </div>
+
+        </div>
+
+
+        <!-- REGISTER -->
+        <div id="registerForm" class="form-container hidden">
+
+            <h2>Daftar Akaun</h2>
+
+            <div class="form-group">
+                <label>Nama</label>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Masukkan nama anda"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Masukkan email anda"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Kata Laluan</label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Masukkan kata laluan"
+                >
+            </div>
+
+            <div class="form-actions">
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="registerUser()"
+                >
+                    Daftar
+                </button>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="backAuth()"
+                >
+                    Kembali
+                </button>
+
+            </div>
+
+            <div class="back-auth">
+                Sudah mempunyai akaun?
+                <span onclick="showLogin()">Log Masuk</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN PAGE
+===================================================== -->
+<div id="mainPage" class="hidden">
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="logo.png"
+            class="brand-logo"
+            alt="Logo"
+        >
+
+        <div class="brand-name">
+            MyJanjiTemu
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <button onclick="showPage('home')">
+            Utama
+        </button>
+
+        <button onclick="showPage('categories')">
+            Kategori
+        </button>
+
+        <button onclick="showPage('tutorial')">
+            Tutorial
+        </button>
+
+        <button onclick="showPage('booking')">
+            Tempahan
+        </button>
+
+        <button onclick="showPage('check')">
+            Semakan
+        </button>
+
+        <button onclick="showPage('rating')">
+            Rating
+        </button>
+
+        <button
+            id="adminNav"
+            class="hidden"
+            onclick="showPage('admin')"
+        >
+            Admin
+        </button>
+
+        <button onclick="logout()">
+            Log Keluar
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     UTAMA
+===================================================== -->
+<section id="home" class="page-section active">
+
+    <div class="slider">
+
+        <!-- SLIDE 1 -->
+        <div class="slide active">
+
+            <div class="slide-content">
+
+                <span class="slide-tag">
+                    MyJanjiTemu
+                </span>
+
+                <h2>
+                    Tempah Janji Temu Dengan Mudah
+                </h2>
+
+                <p>
+                    Pilih doktor, peguam atau ahli terapi yang
+                    sesuai dan buat tempahan dengan cepat.
+                </p>
+
+            </div>
+
+            <div class="slide-image">
+                <img src="logo.png" alt="Slide 1">
+            </div>
+
+        </div>
+
+
+        <!-- SLIDE 2 -->
+        <div class="slide">
+
+            <div class="slide-content">
+
+                <span class="slide-tag">
+                    Pilihan Anda
+                </span>
+
+                <h2>
+                    3 Kategori Perkhidmatan
+                </h2>
+
+                <p>
+                    Dapatkan perkhidmatan Doktor, Peguam dan
+                    Terapi dalam satu platform.
+                </p>
+
+            </div>
+
+            <div class="slide-image">
+                <img src="logo.png" alt="Slide 2">
+            </div>
+
+        </div>
+
+
+        <!-- SLIDE 3 -->
+        <div class="slide">
+
+            <div class="slide-content">
+
+                <span class="slide-tag">
+                    Rating Public
+                </span>
+
+                <h2>
+                    Kongsi Pengalaman Anda
+                </h2>
+
+                <p>
+                    Berikan rating dan komen supaya pengguna
+                    lain dapat melihat pengalaman anda.
+                </p>
+
+            </div>
+
+            <div class="slide-image">
+                <img src="logo.png" alt="Slide 3">
+            </div>
+
+        </div>
+
+
+        <button
+            class="slider-arrow left"
+            onclick="changeSlide(-1)"
+        >
+            &#10094;
+        </button>
+
+        <button
+            class="slider-arrow right"
+            onclick="changeSlide(1)"
+        >
+            &#10095;
+        </button>
+
+
+        <div class="dots">
+
+            <button
+                class="dot active"
+                onclick="goSlide(0)"
+            ></button>
+
+            <button
+                class="dot"
+                onclick="goSlide(1)"
+            ></button>
+
+            <button
+                class="dot"
+                onclick="goSlide(2)"
+            ></button>
+
+        </div>
+
+    </div>
+
+
+    <div class="home-actions">
+
+        <div
+            class="big-action"
+        >
+            <div class="icon">👨‍⚕️</div>
+            <h3>Doktor</h3>
+            <p>Tempah janji temu doktor.</p>
+        </div>
+
+        <div
+            class="big-action"
+        >
+            <div class="icon">⚖️</div>
+            <h3>Peguam</h3>
+            <p>Dapatkan perkhidmatan peguam.</p>
+        </div>
+
+        <div
+            class="big-action"
+        >
+            <div class="icon">🧠</div>
+            <h3>Terapi</h3>
+            <p>Pilih ahli terapi yang sesuai.</p>
+        </div>
+
+        <div
+            class="big-action"
+        >
+            <div class="icon">⭐</div>
+            <h3>Rating</h3>
+            <p>Lihat rating dan komen public.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TUTORIAL
+===================================================== -->
+<section id="tutorial" class="page-section">
+
+    <div class="section-title">
+
+        <h1>Cara Menggunakan MyJanjiTemu</h1>
+
+        <p>
+            Ikuti langkah mudah berikut.
+        </p>
+
+    </div>
+
+
+    <div class="tutorial-grid">
+
+        <div class="tutorial-card">
+
+            <div class="number">1</div>
+
+            <h3>Pilih Kategori</h3>
+
+            <p>
+                Pilih sama ada anda memerlukan Doktor,
+                Peguam atau Terapi.
+            </p>
+
+        </div>
+
+
+        <div class="tutorial-card">
+
+            <div class="number">2</div>
+
+            <h3>Pilih Pekerja</h3>
+
+            <p>
+                Lihat profil pekerja dan pilih pekerja
+                yang anda kehendaki.
+            </p>
+
+        </div>
+
+
+        <div class="tutorial-card">
+
+            <div class="number">3</div>
+
+            <h3>Tekan Tempah</h3>
+
+            <p>
+                Tekan butang Tempah dan nama pekerja akan
+                dimasukkan secara automatik.
+            </p>
+
+        </div>
+
+
+        <div class="tutorial-card">
+
+            <div class="number">4</div>
+
+            <h3>Pilih Tarikh</h3>
+
+            <p>
+                Pilih tarikh dan masa janji temu.
+            </p>
+
+        </div>
+
+
+        <div class="tutorial-card">
+
+            <div class="number">5</div>
+
+            <h3>Sahkan</h3>
+
+            <p>
+                Lengkapkan tempahan dan semak tempahan
+                anda di halaman Semakan.
+            </p>
+
+        </div>
+
+
+        <div class="tutorial-card">
+
+            <div class="number">6</div>
+
+            <h3>Beri Rating</h3>
+
+            <p>
+                Selepas menggunakan perkhidmatan, anda
+                boleh memberikan rating dan komen public.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+<section id="categories" class="page-section">
+
+    <div class="section-title">
+
+        <h1>Pilih Kategori</h1>
+
+        <p>
+            Pilih perkhidmatan yang anda perlukan.
+        </p>
+
+    </div>
+
+
+    <div class="category-main-grid">
+
+        <div
+            class="category-main-card"
+            onclick="openCategory('Doktor')"
+        >
+
+            <div class="category-icon">👨‍⚕️</div>
+
+            <h2>Doktor</h2>
+
+            <p>
+                Pemeriksaan dan perkhidmatan kesihatan.
+            </p>
+
+            <button class="btn btn-primary">
+                Lihat Doktor
+            </button>
+
+        </div>
+
+
+        <div
+            class="category-main-card"
+            onclick="openCategory('Peguam')"
+        >
+
+            <div class="category-icon">⚖️</div>
+
+            <h2>Peguam</h2>
+
+            <p>
+                Nasihat dan perkhidmatan undang-undang.
+            </p>
+
+            <button class="btn btn-secondary">
+                Lihat Peguam
+            </button>
+
+        </div>
+
+
+        <div
+            class="category-main-card"
+            onclick="openCategory('Terapi')"
+        >
+
+            <div class="category-icon">🧠</div>
+
+            <h2>Terapi</h2>
+
+            <p>
+                Perkhidmatan terapi dan sokongan.
+            </p>
+
+            <button class="btn btn-success">
+                Lihat Terapi
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CATEGORY DETAIL
+===================================================== -->
+<section id="categoryDetail" class="page-section">
+
+    <div class="category-detail">
+
+        <div class="category-detail-header">
+
+            <div>
+
+                <h2 id="categoryDetailTitle">
+                    Doktor
+                </h2>
+
+                <p id="categoryDetailDescription">
+                    Senarai pekerja.
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn btn-outline"
+                onclick="showPage('categories')"
+            >
+                ← Kembali
+            </button>
+
+        </div>
+
+
+        <div
+            class="type-grid"
+            id="specializationList"
+        >
+        </div>
+
+
+        <div class="location-panel">
+
+            <h3>Lokasi</h3>
+
+            <div
+                class="location-list"
+                id="locationList"
+            >
+            </div>
+
+        </div>
+
+
+        <div class="profile-panel">
+
+            <h3>Profil Pekerja</h3>
+
+            <div
+                class="profile-grid"
+                id="profileGrid"
+            >
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+<section id="profile" class="page-section">
+
+    <div
+        id="profileDetailsContainer"
+        class="profile-details"
+    >
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BOOKING
+===================================================== -->
+<section id="booking" class="page-section">
+
+    <div class="section-title">
+
+        <h1>Tempahan Janji Temu</h1>
+
+        <p>
+            Lengkapkan maklumat tempahan anda.
+        </p>
+
+    </div>
+
+
+    <div class="booking-wrapper">
+
+        <div class="selected-worker-box">
+
+            <strong>
+                Pekerja yang dipilih:
+            </strong>
+
+            <span id="selectedWorkerDisplay">
+                Belum dipilih
+            </span>
+
+        </div>
+
+
+        <div class="booking-grid">
+
+            <div>
+
+                <div class="form-group">
+
+                    <label>Nama</label>
+
+                    <input
+                        type="text"
+                        id="bookingUser"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Pekerja</label>
+
+                    <input
+                        type="text"
+                        id="bookingWorker"
+                        readonly
+                        placeholder="Pilih pekerja dahulu"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Tarikh</label>
+
+                    <input
+                        type="date"
+                        id="bookingDate"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Masa</label>
+
+                    <div
+                        class="time-slots"
+                        id="timeSlots"
+                    >
+
+                        <button
+                            class="time-slot"
+                            onclick="selectTime(this,'09:00')"
+                        >
+                            09:00
+                        </button>
+
+                        <button
+                            class="time-slot"
+                            onclick="selectTime(this,'10:00')"
+                        >
+                            10:00
+                        </button>
+
+                        <button
+                            class="time-slot"
+                            onclick="selectTime(this,'11:00')"
+                        >
+                            11:00
+                        </button>
+
+                        <button
+                            class="time-slot"
+                            onclick="selectTime(this,'14:00')"
+                        >
+                            14:00
+                        </button>
+
+                        <button
+                            class="time-slot"
+                            onclick="selectTime(this,'15:00')"
+                        >
+                            15:00
+                        </button>
+
+                        <button
+                            class="time-slot"
+                            onclick="selectTime(this,'16:00')"
+                        >
+                            16:00
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="form-group">
+
+                    <label>No. Telefon</label>
+
+                    <input
+                        type="text"
+                        id="bookingPhone"
+                        placeholder="Contoh: 0123456789"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Catatan</label>
+
+                    <textarea
+                        id="bookingNote"
+                        placeholder="Masukkan catatan jika perlu"
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    id="bookingSubmitButton"
+                    class="btn btn-primary"
+                    onclick="makeBooking()"
+                >
+                    Sahkan Tempahan
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CHECK BOOKING
+===================================================== -->
+<section id="check" class="page-section">
+
+    <div class="section-title">
+
+        <h1>Semakan Tempahan</h1>
+
+        <p>
+            Lihat semua tempahan anda.
+        </p>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table class="booking-table">
+
+            <thead>
+
+                <tr>
+                    <th>Nama</th>
+                    <th>Pekerja</th>
+                    <th>Kategori</th>
+                    <th>Tarikh</th>
+                    <th>Masa</th>
+                    <th>Telefon</th>
+                    <th>Status</th>
+                    <th>Tindakan</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="bookingTableBody">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RATING
+===================================================== -->
+<section id="rating" class="page-section">
+
+    <div class="section-title">
+
+        <h1>Rating & Komen</h1>
+
+        <p>
+            Rating dan komen boleh dilihat oleh semua pengguna.
+        </p>
+
+    </div>
+
+
+    <div class="rating-wrapper">
+
+        <div class="form-group">
+
+            <label>Pilih Pekerja</label>
+
+            <select id="ratingWorker">
+
+                <option value="">
+                    -- Pilih Pekerja --
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <label>Rating</label>
+
+        <div class="rating-stars">
+
+            <span
+                class="rating-star"
+                onclick="setRating(1)"
+            >★</span>
+
+            <span
+                class="rating-star"
+                onclick="setRating(2)"
+            >★</span>
+
+            <span
+                class="rating-star"
+                onclick="setRating(3)"
+            >★</span>
+
+            <span
+                class="rating-star"
+                onclick="setRating(4)"
+            >★</span>
+
+            <span
+                class="rating-star"
+                onclick="setRating(5)"
+            >★</span>
+
+        </div>
+
+
+        <textarea
+            id="ratingComment"
+            class="rating-textarea"
+            placeholder="Tulis komen anda..."
+        ></textarea>
+
+
+        <br><br>
+
+        <button
+            class="btn btn-primary"
+            onclick="submitRating()"
+        >
+            Hantar Rating
+        </button>
+
+
+        <div class="comments-container">
+
+            <h2 style="margin-bottom:15px;color:#2f6f5e;">
+                Komen Public
+            </h2>
+
+            <div id="commentsContainer">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADMIN
+===================================================== -->
+<section id="admin" class="page-section">
+
+    <div class="section-title">
+
+        <h1>Panel Admin</h1>
+
+        <p>
+            Admin boleh melihat semua tempahan, rating, komen dan mengubah maklumat pekerja.
+        </p>
+
+    </div>
+
+
+    <div class="admin-wrapper">
+
+        <div class="admin-summary-grid">
+            <div class="admin-summary-card">
+                <strong id="adminBookingCount">0</strong>
+                <span>Jumlah Tempahan</span>
+            </div>
+            <div class="admin-summary-card">
+                <strong id="adminCommentCount">0</strong>
+                <span>Jumlah Rating & Komen</span>
+            </div>
+        </div>
+
+        <div class="admin-data-section">
+            <h2>Semua Tempahan Pelanggan</h2>
+            <div class="table-container">
+                <table class="booking-table">
+                    <thead>
+                        <tr>
+                            <th>Nama</th><th>Email</th><th>Pekerja</th><th>Kategori</th>
+                            <th>Tarikh</th><th>Masa</th><th>Telefon</th><th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminBookingTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="admin-data-section">
+            <h2>Semua Rating & Komen Pengguna</h2>
+            <div id="adminCommentsContainer"></div>
+        </div>
+
+        <div id="adminProfilesContainer">
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<script src="app.js"></script>
+
+
+</body>
+</html>
